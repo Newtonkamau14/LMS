@@ -22,7 +22,7 @@ interface UserProfile {
 
 export const AdminService = {
   getAnalytics: async (): Promise<Analytics> => {
-    const response = await api.get<Analytics>('/admin/analytics');
+    const response = await api.get<Analytics>('/api/admin/analytics');
     return response.data;
   },
 
@@ -34,7 +34,7 @@ export const AdminService = {
   },
 
   createUser: async (data: CreateUserRequest): Promise<User> => {
-    const response = await api.post<User>('/admin/users', data);
+    const response = await api.post<User>('/api/admin/users', data);
     return response.data;
   },
 
@@ -44,30 +44,30 @@ export const AdminService = {
     if (courseId) params.append('courseId', courseId);
     if (role) params.append('role', role);
     
-    const response = await api.get<User[]>(`/admin/users?${params.toString()}`);
+    const response = await api.get<User[]>(`/api/admin/users?${params.toString()}`);
     return response.data;
   },
 
   updateUserRole: async (userId: string, role: string): Promise<User> => {
-    const response = await api.patch<User>(`/admin/users/${userId}/role`, { role });
+    const response = await api.patch<User>(`/api/admin/users/${userId}/role`, { role });
     return response.data;
   },
 
   updateUserStatus: async (userId: string, status: string): Promise<User> => {
-    const response = await api.patch<User>(`/admin/users/${userId}/status`, { status });
+    const response = await api.patch<User>(`/api/admin/users/${userId}/status`, { status });
     return response.data;
   },
 
   deleteUser: async (userId: string): Promise<void> => {
-    await api.delete(`/admin/users/${userId}`);
+    await api.delete(`/api/admin/users/${userId}`);
   },
   
   suspendUser: async (userId: string): Promise<void> => {
-    await api.post(`/admin/users/${userId}/suspend`);
+    await api.post(`/api/admin/users/${userId}/suspend`);
   },
   
   unsuspendUser: async (userId: string): Promise<void> => {
-    await api.post(`/admin/users/${userId}/unsuspend`);
+    await api.post(`/api/admin/users/${userId}/unsuspend`);
   },
   
   resetPassword: async (userId: string): Promise<{ message: string }> => {
@@ -76,7 +76,7 @@ export const AdminService = {
   },
 
   getUserProfile: async (userId: string): Promise<UserProfile> => {
-    const response = await api.get(`/admin/users/${userId}/profile`);
+    const response = await api.get(`/api/admin/users/${userId}/profile`);
     return response.data;
   },
 

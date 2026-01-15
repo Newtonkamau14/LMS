@@ -131,14 +131,4 @@ A comprehensive full-stack Learning Management System built with modern web tech
    ```bash
    yarn start
    ```
-
-### Testing
-
-- Run tests using:
-  ```bash
-  npm test
-  ```
-  or with yarn:
-  ```bash
-  yarn test
   ```

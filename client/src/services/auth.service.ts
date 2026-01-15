@@ -41,7 +41,7 @@ export const AuthService = {
   },
   
   register: async (data: RegisterRequest): Promise<User> => {
-    const response = await api.post<AuthResponse>('/auth/register', data);
+    const response = await api.post<AuthResponse>('/api/auth/register', data);
     const { token, user } = response.data;
     
     // Store token and user data
@@ -58,7 +58,7 @@ export const AuthService = {
     try {
       // Call server to blacklist the token if we're authenticated
       if (AuthService.isAuthenticated()) {
-        await api.post('/auth/logout');
+        await api.post('/api/auth/logout');
       }
     } catch (error) {
       console.error('Error during logout:', error);
@@ -161,7 +161,7 @@ export const AuthService = {
   },
 
   changePassword: async (currentPassword: string, newPassword: string, confirmPassword: string): Promise<void> => {
-    await api.post('/auth/change-password', {
+    await api.post('/api/auth/change-password', {
       currentPassword,
       newPassword,
       confirmPassword
@@ -171,7 +171,7 @@ export const AuthService = {
   // For first login, use this specific method which doesn't require currentPassword validation
   changePasswordFirstLogin: async (newPassword: string, confirmPassword: string): Promise<void> => {
     console.log('Using first login password change method');
-    await api.post('/auth/change-password', {
+    await api.post('/api/auth/change-password', {
       currentPassword: '',  // Send empty string for first login
       newPassword,
       confirmPassword

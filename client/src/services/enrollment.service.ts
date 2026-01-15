@@ -38,7 +38,7 @@ class EnrollmentService {
   async enrollStudent(courseId: number): Promise<void> {
     try {
       console.log('Enrolling in course:', courseId);
-      const response = await api.post('/enroll/student', { courseId });
+      const response = await api.post('/api/enroll/student', { courseId });
       return response.data;
     } catch (error: any) {
       console.error('Error enrolling student:', error.response?.data || error.message);
@@ -52,7 +52,7 @@ class EnrollmentService {
 
   async getStudentCourses(): Promise<StudentCourse[]> {
     try {
-      const response = await api.get('/enroll/student/courses');
+      const response = await api.get('/api/enroll/student/courses');
       return response.data.data.courses;
     } catch (error: any) {
       console.error('Error getting student courses:', error.response?.data || error.message);
@@ -62,7 +62,7 @@ class EnrollmentService {
 
   async checkEnrollment(courseId: number): Promise<EnrollmentStatus> {
     try {
-      const response = await api.get(`/enroll/check/${courseId}`);
+      const response = await api.get(`/api/enroll/check/${courseId}`);
       return response.data.data;
     } catch (error: any) {
       console.error('Error checking enrollment:', error.response?.data || error.message);
@@ -73,7 +73,7 @@ class EnrollmentService {
   // Admin methods
   async getAvailableUsers(courseId: number, role: 'student' | 'instructor'): Promise<AvailableUser[]> {
     try {
-      const response = await api.get(`/enroll/admin/available-users/${courseId}?role=${role}`);
+      const response = await api.get(`/api/enroll/admin/available-users/${courseId}?role=${role}`);
       console.log('API response:', response.data);
       
       // Standard response format should be { data: { users: [...] } }
@@ -104,7 +104,7 @@ class EnrollmentService {
   async enrollStudentAsAdmin(data: EnrollmentRequest): Promise<void> {
     try {
       console.log('Enrolling student with data:', data);
-      const response = await api.post('/enroll/admin/enroll/student', data);
+      const response = await api.post('/api/enroll/admin/enroll/student', data);
       return response.data;
     } catch (error: any) {
       console.error('Enrollment error details:', error.response?.data || error.message);
@@ -119,7 +119,7 @@ class EnrollmentService {
   async enrollInstructorAsAdmin(data: EnrollmentRequest): Promise<void> {
     try {
       console.log('Enrolling instructor with data:', data);
-      const response = await api.post('/enroll/admin/enroll/instructor', data);
+      const response = await api.post('/api/enroll/admin/enroll/instructor', data);
       return response.data;
     } catch (error: any) {
       console.error('Enrollment error details:', error.response?.data || error.message);
@@ -133,9 +133,9 @@ class EnrollmentService {
   async enrollUsersBulk(data: BulkEnrollmentRequest): Promise<void> {
     try {
       console.log('Bulk enrolling users with data:', data);
-      const response = await api.post('/enroll/admin/enroll/bulk', data);
+      const response = await api.post('/api/enroll/admin/enroll/bulk', data);
       return response.data;
-    } catch (error: any) {
+    } catch (error:any) {
       console.error('Bulk enrollment error details:', error.response?.data || error.message);
       if (error.response?.data?.message) {
         throw new Error(error.response.data.message);

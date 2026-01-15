@@ -4,7 +4,7 @@ import { Course, CreateCourseRequest, Post } from '../types';
 export const CourseService = {
   getAllCourses: async (): Promise<Course[]> => {
     try {
-      const response = await api.get('/courses');
+      const response = await api.get('/api/courses');
       
       // Handle different response formats
       if (response.data && response.data.data && Array.isArray(response.data.data.courses)) {
@@ -25,7 +25,7 @@ export const CourseService = {
 
   getCourseById: async (id: string): Promise<Course> => {
     try {
-      const response = await api.get(`/courses/${id}`);
+      const response = await api.get(`/api/courses/${id}`);
       
       // Handle different response formats
       if (response.data && response.data.data) {
@@ -41,7 +41,7 @@ export const CourseService = {
 
   createCourse: async (data: CreateCourseRequest): Promise<Course> => {
     try {
-      const response = await api.post('/courses/create', data);
+      const response = await api.post('/api/courses/create', data);
       
       // Handle different response formats
       if (response.data && response.data.data) {
@@ -57,7 +57,7 @@ export const CourseService = {
 
   getCoursePosts: async (courseId: string): Promise<Post[]> => {
     try {
-      const response = await api.get(`/posts/course/${courseId}`);
+      const response = await api.get(`/api/posts/course/${courseId}`);
       
       // Handle different response formats
       if (response.data && response.data.data && Array.isArray(response.data.data.posts)) {
@@ -78,7 +78,7 @@ export const CourseService = {
 
   getInstructorCourses: async (): Promise<Course[]> => {
     try {
-      const response = await api.get('/courses/instructor');
+      const response = await api.get('/api/courses/instructor');
       
       // Handle different response formats
       if (response.data && response.data.data && Array.isArray(response.data.data.courses)) {
@@ -100,7 +100,7 @@ export const CourseService = {
 
   getEnrolledCourses: async (): Promise<Course[]> => {
     try {
-      const response = await api.get('/courses/enrolled');
+      const response = await api.get('/api/courses/enrolled');
       
       // Handle different response formats
       if (response.data && response.data.courses && Array.isArray(response.data.courses)) {
@@ -133,7 +133,7 @@ export const CourseService = {
 
   getEnrolledUsers: async (courseId: string): Promise<any[]> => {
     try {
-      const response = await api.get(`/courses/${courseId}/users`);
+      const response = await api.get(`/api/courses/${courseId}/users`);
       
       // Handle different response formats
       if (response.data && response.data.data && Array.isArray(response.data.data.users)) {
