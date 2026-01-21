@@ -9,11 +9,14 @@ export default {
     status = "active",
     firstName,
     lastName,
+
   }) {
     const hashedPassword = await bcrypt.hash(password, 10);
+        const fullName = `${firstName} ${lastName}`.trim();
+
     const [result] = await pool.execute(
-      "INSERT INTO users (email, password, role, status, first_name, last_name, is_first_login) VALUES (?, ?, ?, ?, ?, ?, 1)",
-      [email, hashedPassword, role, status, firstName, lastName]
+      "INSERT INTO users (email, password, role, status, first_name, last_name, name, is_first_login) VALUES (?, ?, ?, ?, ?, ?, ?, 1)",
+      [email, hashedPassword, role, status, firstName, lastName, fullName]
     );
     return result.insertId;
   },

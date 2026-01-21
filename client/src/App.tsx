@@ -30,6 +30,7 @@ import AssignmentListPage from './pages/assignments/AssignmentListPage';
 
 // Enrollment Pages
 import EnrollmentPage from './pages/enrollments/EnrollmentPage';
+import RegisterPage from './pages/auth/RegisterPage';
 
 // Error Boundary component to catch rendering errors
 interface ErrorBoundaryState {
@@ -123,6 +124,7 @@ function AppRoutes() {
     <Routes>
       {/* Public Routes */}
       <Route path="/login" element={<LoginPage />} />
+      <Route path='/register' element={<RegisterPage />} />
       
       {/* First Login Route */}
       <Route path="/first-login" element={<FirstLoginPage />} />

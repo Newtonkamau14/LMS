@@ -204,6 +204,7 @@ const UserManagementPage: React.FC = () => {
       toast.success('Instructor assigned to course successfully');
       setSelectedInstructor('');
       setSelectedCourseForAssignment('');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error('Error assigning instructor to course:', err);
       

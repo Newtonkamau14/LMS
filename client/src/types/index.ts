@@ -5,8 +5,8 @@ export interface User {
   last_name?: string;
   firstName?: string;
   lastName?: string;
-  role: 'admin' | 'instructor' | 'student';
-  status: 'active' | 'suspended';
+  role: "admin" | "instructor" | "student";
+  status: "active" | "suspended";
   is_first_login?: boolean;
   createdAt?: string;
   created_at?: string;
@@ -18,7 +18,7 @@ export interface Course {
   description: string;
   instructor: User;
   createdAt: string;
-  relationshipType?: 'assigned' | 'enrolled' | string;
+  relationshipType?: "assigned" | "enrolled" | string;
 }
 
 export interface PostFile {
@@ -60,7 +60,7 @@ export interface RegisterRequest {
   name: string;
   email: string;
   password: string;
-  role: 'admin' | 'instructor' | 'student';
+  role: "admin" | "instructor" | "student";
 }
 
 export interface AuthResponse {
@@ -76,7 +76,7 @@ export interface EnrollmentRequest {
 export interface BulkEnrollmentRequest {
   courseId: number;
   userIds: number[];
-  role: 'student' | 'instructor';
+  role: "student" | "instructor";
 }
 
 export interface CreateCourseRequest {
@@ -96,5 +96,6 @@ export interface CreateUserRequest {
   email: string;
   firstName: string;
   lastName: string;
-  role: 'admin' | 'instructor' | 'student';
+  role: "admin" | "instructor" | "student";
 }
+

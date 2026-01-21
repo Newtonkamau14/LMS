@@ -71,7 +71,7 @@ export const AdminService = {
   },
   
   resetPassword: async (userId: string): Promise<{ message: string }> => {
-    const response = await api.post<{ message: string }>(`/admin/users/${userId}/reset-password`);
+    const response = await api.post<{ message: string }>(`/api/admin/users/${userId}/reset-password`);
     return response.data;
   },
 
@@ -81,7 +81,7 @@ export const AdminService = {
   },
 
   removeEnrollment: async (enrollmentId: string) => {
-    const response = await api.delete(`/enroll/admin/${enrollmentId}`);
+    const response = await api.delete(`/api/enroll/admin/${enrollmentId}`);
     return response.data;
   }
 };

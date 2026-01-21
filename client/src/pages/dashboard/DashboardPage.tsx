@@ -9,7 +9,6 @@ import AdminService from '../../services/admin.service';
 import { Course, Analytics } from '../../types';
 import CourseCard from '../../components/courses/CourseCard';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
 import Button from '../../components/ui/Button';
 
 // Custom error boundary component
